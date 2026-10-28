@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lomang Cari Kos</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+
+       <!-- 1. SPLASH SCREEN -->
+        <div id="splash-screen" class="screen active">
+            <div class="splash-center">
+                <img src="kelomang.png" alt="Logo Lomang" class="splash-logo">
+                <h1>Lomang cari KOS</h1>
+            </div>
+            <div class="splash-bottom">
+                <p>#NgekosBALI</p>
+            </div>
+        </div>
+
+        <!-- 2. LOGIN / SIGN UP SCREEN -->
+        <div id="login-screen" class="screen">
+            <div class="login-header">
+                <h2>Lomang cari KOS</h2>
+                <h3>Buat Akun / Masuk</h3>
+                <p>Masukkan email Anda untuk mendaftar atau masuk</p>
+            </div>
+            <div class="login-body">
+                <input type="email" placeholder="email@gmail.com" class="input-form">
+                <button class="btn btn-black" onclick="goToHome()">Masuk sebagai Pencari Kos</button>
+                <button class="btn btn-outline" onclick="goToHome()">Masuk sebagai Pemilik Kos</button>
+                
+                <div class="divider"><span>atau</span></div>
+                
+                <button class="btn btn-light"><img src="google.png" alt="Google" class="icon-btn"> Lanjutkan dengan Google</button>
+                <button class="btn btn-light"><img src="apple.png" alt="Apple" class="icon-btn"> Lanjutkan dengan Apple</button>
+            </div>
+        </div>
+
+        <!-- 3. HOME SCREEN -->
+        <div id="home-screen" class="screen">
+            <div class="home-header">
+                <div class="header-title">
+                    <img src="kelomang.png" alt="Logo" class="logo-small">
+                    <div>
+                        <h2>Cari Kos</h2>
+                        <p>Amankan kamar sebelum ke Bali</p>
+                    </div>
+                </div>
+                <div class="search-box">
+                    <img src="search.png" alt="Search" class="icon-search">
+                    <input type="text" placeholder="Mau cari kos di mana?">
+                </div>
+            </div>
+
+            <!-- Iklan Privilege Pemilik Kos (Auto-slide) -->
+            <div class="slider-container">
+                <div class="slider-wrapper" id="promo-slider">
+                    <img src="promo1.png" alt="Iklan 1" class="slide">
+                    <img src="promo2.png" alt="Iklan 2" class="slide">
+                    <img src="promo3.png" alt="Iklan 3" class="slide">
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <select class="city-dropdown">
+                    <option value="Semua">Semua Kota di Bali</option>
+                    <option value="Denpasar Utara">Denpasar Utara</option>
+                    <option value="Denpasar Selatan">Denpasar Selatan</option>
+                    <option value="Denpasar Timur">Denpasar Timur</option>
+                    <option value="Badung">Badung</option>
+                    <option value="Gianyar">Gianyar</option>
+                    <option value="Singaraja">Singaraja</option>
+                </select>
+            </div>
+
+            <!-- Listing Kos -->
+            <div class="kos-list">
+                <!-- Kos Item 1 -->
+                <div class="kos-card" onclick="showScreen('detail-screen')">
+                    <img src="viewsawah.jpg" alt="Foto Kos" class="kos-thumb">
+                    <div class="kos-info">
+                        <span class="badge badge-campur">Campur</span>
+                        <h4>Kost SawaKu Tipe A</h4>
+                        <p class="lokasi"><img src="lokasi.png" alt="Pin" class="icon-micro"> Denpasar Selatan</p>
+                        <div class="rating-mini"><img src="starpng.png" alt="Star" class="icon-micro"> 4.5</div>
+                        <p class="harga">Rp1.500.000 / bulan</p>
+                    </div>
+                </div>
+                <!-- Kos Item 2 -->
+                <div class="kos-card" onclick="showScreen('detail-screen')">
+                    <img src="kosluas.jpg" alt="Foto Kos" class="kos-thumb">
+                    <div class="kos-info">
+                        <span class="badge badge-putri">Putri</span>
+                        <h4>Kost Zeal 1 Tipe B</h4>
+                        <p class="lokasi"><img src="lokasi.png" alt="Pin" class="icon-micro"> Badung</p>
+                        <div class="rating-mini"><img src="starpng.png" alt="Star" class="icon-micro"> 4.8</div>
+                        <p class="harga">Rp2.700.000 / bulan</p>
+                    </div>
+                </div>
+                <!-- Kos Item 3 -->
+                <div class="kos-card" onclick="showScreen('detail-screen')">
+                    <img src="kosPastel.jpg" alt="Foto Kos" class="kos-thumb">
+                    <div class="kos-info">
+                        <span class="badge badge-putra">Putra</span>
+                        <h4>Kost Singaraja</h4>
+                        <p class="lokasi"><img src="lokasi.png" alt="Pin" class="icon-micro"> Singaraja</p>
+                        <div class="rating-mini"><img src="starpng.png" alt="Star" class="icon-micro"> 4.2</div>
+                        <p class="harga">Rp1.200.000 / bulan</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="height: 80px;"></div>
+            
+            <!-- Bottom Navigation (Semua Terhubung) -->
+            <div class="bottom-nav">
+                <div class="nav-item active" onclick="showScreen('home-screen')">
+                    <img src="search.png" alt="Cari">
+                    <span>Cari</span>
+                </div>
+                <div class="nav-item" onclick="showScreen('favorit-screen')">
+                    <img src="lovegrey.png" alt="Favorit">
+                    <span>Favorit</span>
+                </div>
+                <div class="nav-item" onclick="showScreen('chat-screen')">
+                    <img src="chat.png" alt="Chat">
+                    <span>Chat</span>
+                </div>
+                <div class="nav-item" onclick="showScreen('profil-screen')">
+                    <img src="profil1.png" alt="Profil">
+                    <span>Profil</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. DETAIL KOS SCREEN -->
+        <div id="detail-screen" class="screen">
+            <div class="detail-header-nav" onclick="showScreen('home-screen')">
+                <img src="backbutton.png" alt="Kembali" class="icon-btn"> Kembali
+            </div>
+            
+            <!-- Foto kos bisa digeser -->
+            <div class="detail-image-slider">
+                <img src="koslilac.jpg" alt="Ruangan">
+                <img src="kmrmandi.jpg" alt="Kamar Mandi">
+            </div>
+
+            <div class="detail-content">
+                <span class="badge badge-campur">Kos Campur</span>
+                <h2>Kost SawaKu Tipe A</h2>
+                <p class="lokasi">Denpasar Selatan, Bali</p>
+
+                <!-- Sistem Rating -->
+                <div class="rating-section">
+                    <div class="rating-score">
+                        <img src="starpng.png" alt="Star" class="icon-small"> 4.5 / 5.0
+                    </div>
+                    <p class="rating-note">*(Sistem rating hanya terbuka untuk pencari kos yang telah menyelesaikan proses booking & sewa)</p>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Deskripsi Kos</h3>
+                    <p>Kos nyaman dengan fasilitas lengkap, sirkulasi udara baik, dan akses 24 jam. Sangat cocok untuk mahasiswa dan pekerja.</p>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Peraturan Kos</h3>
+                    <ul class="aturan-list">
+                        <li><img src="profile2.png" alt="Rule"> Maks. 2 orang/kamar</li>
+                        <li><img src="peticon.png" alt="Rule"> Dilarang membawa hewan peliharaan</li>
+                        <li><img src="payment.png" alt="Rule"> Deposit Rp300.000 di awal</li>
+                    </ul>
+                </div>
+
+                <!-- Pilihan Durasi Sewa & Total Estimasi Harga -->
+                <div class="detail-section">
+                    <h3>Durasi Sewa</h3>
+                    <div class="rental-duration-box">
+                        <label for="durasi-bulan">Pilih Lama Sewa (Bulan):</label>
+                        <select id="durasi-bulan" class="input-form" onchange="hitungTotalHarga()">
+                            <option value="1">1 Bulan</option>
+                            <option value="3">3 Bulan</option>
+                            <option value="6">6 Bulan</option>
+                            <option value="12">1 Tahun (12 Bulan)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="detail-section owner-profile">
+                    <img src="pakomang.png" alt="Pemilik" class="owner-img">
+                    <div class="owner-info">
+                        <h4>Dikelola oleh Bpk. Komang</h4>
+                        <p>Cerita Pemilik: Mengelola kos sejak 2020, ramah dan cepat tanggap jika ada perbaikan.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Booking Bar -->
+            <div class="bottom-action-bar">
+                <div class="price-col">
+                    <span class="price-label">Total Harga (<span id="txt-bulan">1</span> Bulan)</span>
+                    <span class="price-value" id="total-harga-view">Rp1.500.000</span>
+                </div>
+                <div class="action-col">
+                    <button class="btn-chat" onclick="showScreen('chat-screen')"><img src="chat.png" alt="Chat"></button>
+                    <button class="btn-booking">Ajukan Sewa</button>
+                </div>
+            </div>
+        </div> 
+
+        <!-- 5. FAVORIT SCREEN -->
+        <div id="favorit-screen" class="screen">
+            <div class="header-simple">
+                <h2>Favorit</h2>
+            </div>
+            <div class="favorit-empty">
+                <img src="lomangbingung.png" alt="Kosong" class="empty-img">
+                <h3>Belum ada kos yang di favorit.</h3>
+                <p>Mulai cari kos idamanmu dan simpan di sini!</p>
+                <button class="btn btn-black" onclick="showScreen('home-screen')">Cari Kos Sekarang</button>
+            </div>
+
+            <!-- Bottom Navigation -->
+            <div class="bottom-nav">
+                <div class="nav-item" onclick="showScreen('home-screen')">
+                    <img src="search.png" alt="Cari">
+                    <span>Cari</span>
+                </div>
+                <div class="nav-item active" onclick="showScreen('favorit-screen')">
+                    <img src="lovegrey.png" alt="Favorit">
+                    <span>Favorit</span>
+                </div>
+                <div class="nav-item" onclick="showScreen('chat-screen')">
+                    <img src="chat.png" alt="Chat">
+                    <span>Chat</span>
+                </div>
+                <div class="nav-item" onclick="showScreen('profil-screen')">
+                    <img src="profil1.png" alt="Profil">
+                    <span>Profil</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. CHAT SCREEN (Dengan gaya "Kosong/Belum ada chat" seperti Favorit) -->
+        <div id="chat-screen" class="screen">
+            <div class="header-simple">
+                <h2>Chat Pemilik Kos</h2>
+            </div>
+            <div class="favorit-empty">
+                <img src="lomangbingung.png" alt="Kosong" class="empty-img">
+                <h3>Belum ada pesan / chat.</h3>
+                <p>Yuk, mulai tanya-tanya pemilik kos lewat halaman detail kos!</p>
+                <button class="btn btn-black" onclick="showScreen('home-screen')">Cari Kos Sekarang</button>
+            </div>
+
+            <!-- Bottom Navigation -->
+            <div class="bottom-nav">
+                <div class="nav-item" onclick="showScreen('home-screen')">
+                    <img src="search.png" alt="Cari">
+                    <span>Cari</span>
+                </div>
+                <div class="nav-item" onclick="showScreen('favorit-screen')">
+                    <img src="lovegrey.png" alt="Favorit">
+                    <span>Favorit</span>
+                </div>
+                <div class="nav-item active" onclick="showScreen('chat-screen')">
+                    <img src="chat.png" alt="Chat">
+                    <span>Chat</span>
+                </div>
+                <div class="nav-item" onclick="showScreen('profil-screen')">
+                    <img src="profil1.png" alt="Profil">
+                    <span>Profil</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. PROFIL SCREEN (Dengan gaya "Kosong/Belum login" seperti Favorit) -->
+        <div id="profil-screen" class="screen">
+            <div class="header-simple">
+                <h2>Profil Saya</h2>
+            </div>
+            <div class="favorit-empty">
+                <img src="lomangbingung.png" alt="Kosong" class="empty-img">
+                <h3>Belum Masuk ke Akun.</h3>
+                <p>Masuk atau daftar untuk melihat profil dan riwayat sewa Anda!</p>
+                <button class="btn btn-black" onclick="showScreen('login-screen')">Masuk / Daftar Akun</button>
+            </div>
+
+            <!-- Bottom Navigation -->
+            <div class="bottom-nav">
+                <div class="nav-item" onclick="showScreen('home-screen')">
+                    <img src="search.png" alt="Cari">
+                    <span>Cari</span>
+                </div>
+                <div class="nav-item" onclick="showScreen('favorit-screen')">
+                    <img src="lovegrey.png" alt="Favorit">
+                    <span>Favorit</span>
+                </div>
+                <div class="nav-item" onclick="showScreen('chat-screen')">
+                    <img src="chat.png" alt="Chat">
+                    <span>Chat</span>
+                </div>
+                <div class="nav-item active" onclick="showScreen('profil-screen')">
+                    <img src="profil1.png" alt="Profil">
+                    <span>Profil</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script Kalkulator Harga Sewa -->
+    <script>
+        function hitungTotalHarga() {
+            const hargaPerBulan = 1500000; // Harga dasar Kost SawaKu Tipe A
+            const selectBulan = document.getElementById('durasi-bulan').value;
+            const total = hargaPerBulan * parseInt(selectBulan);
+            
+            const formatRupiah = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(total);
+            
+            document.getElementById('txt-bulan').innerText = selectBulan;
+            document.getElementById('total-harga-view').innerText = formatRupiah;
+        }
+    </script>
+
+    <!-- Menghubungkan JS Eksternal -->
+    <script src="app.js"></script>
+</body>
+</html>

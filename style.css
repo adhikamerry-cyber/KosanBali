@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #e0e0e0; /* Background abu-abu untuk desktop */
+    display: flex;
+    justify-content: center;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 414px;
+    height: 100vh;
+    background-color: #ffffff;
+    position: relative; /* Wajib relative agar absolute di dalam mengikutinya */
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.screen {
+    display: none;
+    min-height: 100%;
+    background-color: #ffffff;
+    padding-bottom: 90px; /* Memberikan ruang kosong di bawah agar konten terakhir tidak tertutup menu navigasi */
+}
+.screen.active {
+    display: block;
+}
+
+/* --- SPLASH SCREEN --- */
+#splash-screen {
+    background-color: #FAD355; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 20px;
+}
+.splash-center {
+    margin-top: 50%;
+    text-align: center;
+}
+.splash-logo {
+    width: 120px;
+    margin-bottom: 20px;
+}
+.splash-center h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+}
+.splash-bottom p {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+}
+
+/* --- LOGIN SCREEN --- */
+.login-header {
+    padding: 60px 20px 20px;
+    text-align: center;
+}
+.login-header h2 { font-size: 24px; margin-bottom: 30px; }
+.login-body {
+    padding: 20px;
+}
+.input-form {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+.btn {
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 10px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.btn-black { background-color: #000; color: #fff; }
+.btn-outline { background-color: transparent; border: 2px solid #000; color: #000; }
+.btn-light { background-color: #f5f5f5; color: #000; border: 1px solid #ddd; }
+.icon-btn { width: 20px; height: 20px; }
+.divider { text-align: center; margin: 20px 0; color: #888; position: relative; }
+.divider span { background: #fff; padding: 0 10px; z-index: 1; position: relative; }
+.divider::before {
+    content: ""; position: absolute; top: 50%; left: 0; right: 0; border-top: 1px solid #ddd; z-index: 0;
+}
+
+/* --- HOME SCREEN --- */
+.home-header { padding: 20px; }
+.header-title { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+.logo-small { width: 50px; }
+.header-title h2 { font-size: 20px; color: #118A46; }
+.search-box {
+    display: flex; align-items: center; background: #f0f0f0; padding: 10px 15px; border-radius: 8px;
+}
+.icon-search { width: 20px; height: 20px; margin-right: 10px; }
+.search-box input { border: none; background: transparent; width: 100%; outline: none; font-size: 14px;}
+
+/* Slider Iklan Subscription */
+.slider-container { width: 100%; overflow: hidden; padding: 0 20px; }
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 300%; /* 3 Iklan */
+}
+.slide { width: 100%; flex: 1; border-radius: 12px; object-fit: cover; height: 140px; margin-right: 10px;}
+
+.filter-section { padding: 20px; }
+.city-dropdown {
+    width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px;
+}
+
+/* List Kos */
+.kos-list { padding: 0 20px 20px; display: flex; flex-direction: column; gap: 15px; }
+.kos-card {
+    border: 1px solid #eaeaea; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;
+}
+.kos-thumb { width: 100%; height: 180px; object-fit: cover; background: #ccc; }
+.kos-info { padding: 15px; }
+.badge { padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+.badge-campur { background: #e0f2f1; color: #00796b; }
+.badge-putri { background: #fce4ec; color: #c2185b; }
+.badge-putra { background: #e3f2fd; color: #1976d2; }
+.kos-info h4 { margin: 10px 0 5px; font-size: 16px; }
+.icon-micro { width: 12px; height: 12px; margin-right: 4px;}
+.lokasi { color: #666; font-size: 12px; margin-bottom: 5px; display: flex; align-items: center;}
+.rating-mini { font-size: 12px; color: #f5a623; margin-bottom: 10px; font-weight: bold; }
+.harga { font-weight: bold; font-size: 14px; color: #118A46; }
+
+/* --- DETAIL KOS SCREEN --- */
+.detail-header-nav { padding: 15px 20px; display: flex; align-items: center; gap: 10px; font-weight: bold; border-bottom: 1px solid #ddd; }
+.detail-image-slider {
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+}
+.detail-image-slider::-webkit-scrollbar { display: none; } /* Hide scrollbar */
+.detail-image-slider img {
+    width: 100%; flex: 0 0 100%; scroll-snap-align: start; object-fit: cover; height: 250px; background: #ccc;
+}
+.detail-content { padding: 20px; padding-bottom: 100px; }
+.detail-content h2 { margin: 10px 0; font-size: 22px; }
+.rating-section { background: #fffde7; padding: 15px; border-radius: 8px; margin: 15px 0; border: 1px dashed #fbc02d; }
+.rating-score { font-size: 18px; font-weight: bold; color: #f5a623; display: flex; align-items: center; gap: 5px; }
+.icon-small { width: 18px; height: 18px; }
+.rating-note { font-size: 11px; color: #888; margin-top: 5px; font-style: italic; }
+.detail-section { margin-bottom: 25px; }
+.detail-section h3 { font-size: 16px; margin-bottom: 10px; border-bottom: 2px solid #eee; padding-bottom: 5px; }
+.detail-section p { font-size: 14px; line-height: 1.5; color: #444; }
+.aturan-list { list-style: none; }
+.aturan-list li { display: flex; align-items: center; gap: 10px; font-size: 14px; margin-bottom: 8px; color: #444; }
+.owner-profile { display: flex; gap: 15px; background: #f9f9f9; padding: 15px; border-radius: 8px; }
+.owner-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; background: #ddd; }
+.owner-info h4 { font-size: 14px; margin-bottom: 5px; }
+
+/* Bottom Action Bar (Detail) */
+.bottom-action-bar {
+    position: fixed; bottom: 0; width: 100%; max-width: 414px; background: #fff; border-top: 1px solid #ddd;
+    display: flex; justify-content: space-between; padding: 15px 20px; align-items: center;
+}
+.aturan-list img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+.price-col { display: flex; flex-direction: column; }
+.price-label { font-size: 12px; color: #888; }
+.price-value { font-size: 16px; font-weight: bold; color: #118A46; }
+.action-col { display: flex; gap: 10px; }
+.btn-chat { padding: 10px; border: 1px solid #118A46; background: #fff; border-radius: 8px; }
+.btn-chat img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+.btn-booking { background: #118A46; color: #fff; padding: 10px 20px; border: none; border-radius: 8px; font-weight: bold; }
+
+/* --- FAVORIT SCREEN --- */
+.header-simple { padding: 20px; text-align: center; border-bottom: 1px solid #eee; }
+.favorit-empty { text-align: center; padding: 60px 20px; }
+.empty-img { width: 150px; margin-bottom: 20px; opacity: 0.5; }
+.favorit-empty h3 { font-size: 18px; margin-bottom: 10px; }
+.favorit-empty p { font-size: 14px; color: #666; margin-bottom: 20px; }
+
+/* --- BOTTOM NAV BAR --- */
+.bottom-nav {
+    position: fixed; /* Menggunakan fixed agar selalu di bawah layar */
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Menjaga posisi tetap di tengah frame 414px */
+    width: 100%;
+    max-width: 414px;
+    height: 70px;
+    background: #fff;
+    border-top: 1px solid #eaeaea;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 9999; /* Memastikan posisinya berada di lapisan paling atas */
+    .nav-item img {
+    width: 24px !important;
+    height: 24px !important;
+    object-fit: contain !important;
+}
+    .nav-item span {
+    display: none;
+}
+}
+
+/* Container Chat Gambar */
+.chat-image-wrapper {
+    width: 100%;
+    /* Mengatur tinggi container agar tidak tertutup header & bottom nav */
+    height: calc(100vh - 130px); 
+    overflow-y: auto; /* Jika gambarnya panjang, bisa di-scroll seperti chat sungguhan */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #f5f5f5;
+    padding-bottom: 20px;
+}
+
+/* Gambar Mockup Chat */
+.chat-mockup-img {
+    width: 100%;
+    max-width: 100%; /* Menyesuaikan lebar layar mobile */
+    height: auto;
+    object-fit: contain; /* Memastikan rasio gambar tetap proporsional */
+    display: block;
+}
